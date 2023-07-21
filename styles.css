@@ -1,0 +1,50 @@
+/* Fonte texto */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* Links arquivos css */
+@import url("styles/header.css");
+@import url("styles/footer.css");
+@import url("styles/filmes-home.css");
+@import url("styles/footer.css");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --branco-padrao: white;
+    --preto-padrao: black;
+    --cor-destaque: #b90000;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--branco-padrao);
+    background-color: var(--preto-padrao);
+}
+
+a {
+    text-decoration: none;
+    color: var(--branco-padrao);
+}
+
+/* Scrollbar personalizada */
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--preto-padrao);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--cor-destaque);
+    border-radius: 5px;
+}

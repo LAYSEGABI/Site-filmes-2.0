@@ -1,0 +1,33 @@
+.filmes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 6em 5em;
+    gap: 30px;
+}
+
+.filme {
+    width: 18vw;
+    text-align: center;
+    transition: .5s;
+
+}
+
+.filme-titulo {
+    opacity: 0;
+    transition: .5s;
+    text-align: start;
+}
+
+.filme:hover {
+    transform: scale(1.06);
+}
+
+.filme:hover .filme-titulo {
+    opacity: 1;
+}
+.poster-filme {
+    border-radius: 5px;
+    width: 20vw;
+}
+
