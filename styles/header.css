@@ -187,10 +187,11 @@ nav {
 
 @media (max-width: 500px) {
 
+    
     .logo {
         position: absolute;
         top: 28px;
-        left: 30px;
+        right: 30px;
     }
     #menu {
         display: block;
@@ -203,12 +204,8 @@ nav {
 }
 
 @media (max-width: 900px) {
-
     header {
-        padding: 2em;
+        position: relative;
     }
-
-    .inicio {
-        display: none;
-    }
+    
 }

@@ -31,3 +31,31 @@
     width: 20vw;
 }
 
+
+@media (max-width: 500px) {
+    .filmes {
+        margin: .3em;
+        gap: 10px;
+    }
+
+    .filme {
+        width: 22vw;
+    }
+
+    .filme-titulo {
+        opacity: 1;
+        font-size: 10px;
+    }
+    
+
+    .poster-filme {
+        width: 100%;
+    }
+}
+
+@media (max-width: 900px) {
+    
+    .filmes {
+        margin: 3em;
+    }
+}
