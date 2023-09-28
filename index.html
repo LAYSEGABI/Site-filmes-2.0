@@ -16,11 +16,15 @@
      <header id="header">
         <a href=""><img class="logo" src="img/logo.png" alt=""></a>
         <nav class="nav-container">
-            <a class="nav-link inicio" href="#">Ínicio</a>
-            <a class="nav-link" href="#projetos">Populares</a>
-            <a class="nav-link" href="#sobre-mim">Recomendados</a>
-            <a class="nav-link" href="#conhecimentos">Favoritos</a>
-            <a class="login" href="#login">Login</a>
+            <a onclick="pegaFilme()" class="nav-link inicio" href="#">Ínicio</a>
+            <a onclick="pegaFilme()" class="nav-link" href="#projetos">Populares</a>
+            <a onclick="pegaRecomendados()" class="nav-link" href="#sobre-mim">Recomendados</a>
+            <div>
+                <input id="busca" type="text" value="">
+                <button class="pesquisa" onclick="buscar()">Buscar</button>
+            </div>
+            <!--<button onclick="pegaRecomendados()">Proxima pagina</button>-->
+            <input type="hidden" id="paginaAtual" value="0">
         </nav>
         <div id="menu">
             <div id="menu-bar" onclick="menuOnClick()">
@@ -41,10 +45,14 @@
         <div class="menu-bg" id="menu-bg"></div>
     </header>
 
+    <div class="detalhes"></div>
+
     <div class="filmes">
 
     </div>
-   
+
+    <p></p>
+
 
     <footer id="footer">
         <div class="container-links">

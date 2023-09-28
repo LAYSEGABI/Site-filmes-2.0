@@ -34,12 +34,13 @@
 
 @media (max-width: 500px) {
     .filmes {
-        margin: .3em;
+        margin: 0;
         gap: 10px;
     }
 
     .filme {
-        width: 22vw;
+        margin: 0;
+        width: 35vw;
     }
 
     .filme-titulo {

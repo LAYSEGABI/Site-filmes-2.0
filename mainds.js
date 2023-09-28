@@ -6,6 +6,40 @@ const options = {
   }
 };
 
+const pegaRecomendados = async () => {
+  const paginaAtual = document.getElementById("paginaAtual");
+  const pagina = parseInt(paginaAtual.value) + 1;
+  paginaAtual.value = pagina;
+  const recomendados = await fetch(`https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${pagina}`, options);
+  const response = await recomendados.json();
+  console.log(options);
+
+
+
+
+  filmesContainer.innerHTML = ''
+  response.results.forEach(filme => {
+
+    const titulo = filme.title;
+    const poster = filme.poster_path;
+    const movieId = filme.id;
+    //const descricao = filme.overview;
+    //const nota = filme.vote_average;
+    //const lancamento = filme.release_date;
+    //const back = filme.backdrop_path;
+
+
+
+    filmesContainer.innerHTML += `<div onclick="pegaDetalhe(${movieId})" class="filme">
+              <img class="poster-filme" src="https://image.tmdb.org/t/p/original/${poster}" alt="falhou">
+               <h4 class="filme-titulo">
+                ${titulo}
+              </h4>
+      
+            </div>`
+  })
+}
+
 
 fetch(`https://api.themoviedb.org/3/movie/popular`, options)
   .then(response => response.json())
@@ -15,7 +49,7 @@ fetch(`https://api.themoviedb.org/3/movie/popular`, options)
 
 let filmesContainer = document.querySelector('.filmes')
 
-const pegaLivro = async () => {
+const pegaFilme = async () => {
   const filmes = await fetch("https://api.themoviedb.org/3/movie/popular");
   const response = await filmes.json();
   console.log(response.results)
@@ -24,6 +58,7 @@ const pegaLivro = async () => {
 
     const titulo = filme.title;
     const poster = filme.poster_path;
+    const movieId = filme.id;
     //const descricao = filme.overview;
     //const nota = filme.vote_average;
     //const lancamento = filme.release_date;
@@ -31,23 +66,74 @@ const pegaLivro = async () => {
 
 
 
-    filmesContainer.innerHTML += `<div class="filme">
+    filmesContainer.innerHTML += `<div onclick="pegaDetalhe(${movieId})" class="filme">
+              <img class="poster-filme" src="https://image.tmdb.org/t/p/original/${poster}" alt="falhou">
+               <h4 class="filme-titulo">
+                ${titulo}
+              </h4>
+      
+            </div>`
+  })
+}
+
+pegaFilme()
+
+
+const buscar = async () => {
+  const palavra = document.getElementById("busca").value;
+  const filmes = await fetch("https://api.themoviedb.org/3/movie/popular");
+  const response = await filmes.json();
+  console.log(response.results)
+  console.log(palavra)
+  filmesContainer.innerHTML = ''
+  response.results.forEach(filme => {
+
+
+    const titulo = filme.title;
+    const tituloBusca = titulo.toLowerCase();
+    const poster = filme.poster_path;
+    const movieId = filme.id;
+    //const descricao = filme.overview;
+    //const nota = filme.vote_average;
+    //const lancamento = filme.release_date;
+    //const back = filme.backdrop_path;
+
+    if (tituloBusca.indexOf(palavra.toLowerCase()) >= 0) {
+      console.log(titulo)
+      filmesContainer.innerHTML += `<div onclick="pegaDetalhe(${movieId})" class="filme">
               <img class="poster-filme" src="https://image.tmdb.org/t/p/original/${poster}" alt="falhou">
                <h4 class="filme-titulo">
                 ${titulo}
               </h4>
             </div>`
+    }
+
+
   })
 }
 
-pegaLivro()
+const pegaDetalhe = async (movieId) => {
 
-function openPopup() {
-  document.getElementById("popup").style.display = "block";
-}
+  const detalhes = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=pt-BR`, options);
+  const response = await detalhes.json();
+  console.log(response);
+  let div_detalhes = document.querySelector('.detalhes');
+  console.log(div_detalhes)
 
-function closePopup() {
-  document.getElementById("popup").style.display = "none";
+
+  const overview = response.overview;
+  const nota = response.vote_average;
+  const lancamento = response.tagline;
+
+
+
+  div_detalhes.innerHTML = `<div class="detalhes_container">
+              <p>${overview}</p>
+               <h4>${nota}</h4>
+              <h4>${lancamento}</h4>
+            </div>`
+
+
 }
 
 

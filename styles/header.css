@@ -170,6 +170,10 @@ nav {
     transform: translateY(4px) rotateZ(-45deg);
 }
 
+.detalhes {
+    color: white;
+}
+
 .change #bar2 {
     opacity: 0;
 }
@@ -182,6 +186,33 @@ nav {
     width: 520px;
     height: 460px;
     transform: translate(-60%, -30%);
+}
+
+nav div {
+    display: flex;
+    align-items: center;
+}
+
+.pesquisa {
+    border: none;
+    padding: .3em .6em;
+    margin-left: -5px;
+    color: white;
+    font-weight: bold;
+    background-color: rgb(228, 0, 0);
+    border-radius: 0 5px 5px 0;
+    transition: .5s;
+}
+
+.pesquisa:hover {
+    background-color: red;
+}
+
+#busca {
+    padding: .29em;
+    border-radius: 5px 0 0 5px;
+    box-shadow: none;
+    border: none;
 }
 
 
